@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+  python:
+    build:
+      context: ./
+    restart: always
+    ports:
+      - 5001:5000
+    volumes:
+      - ./sources:/application
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 5002:8080

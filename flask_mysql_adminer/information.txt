@@ -1,0 +1,11 @@
+Execute bash of the todo_app-python-1 container:
+docker exec -it  todo_app-python-1 bash
+
+Run Python:
+python
+
+Import db, [ClassesYouNeed]:
+from main import db, DataTest
+
+Get all data from table data_test (class DataTest):
+DataTest.query.all()

@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+
+  ubuntu:
+      build:
+        context: ./
+        dockerfile: dockerfile-linux
+      ports:
+        - "9999:80"
+      volumes:
+        - ./sources:/pybash
+      hostname: ubuntu
+      tty: true

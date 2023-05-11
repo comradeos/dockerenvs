@@ -27,6 +27,7 @@ docker ps
 docker ps -a  
 <!-- просмотр всех образов -->
 docker images  
+<!-- поиск образа tomcat на dockerhub -->
 docker search tomcat  
 docker pull tomcat  
 docker run -it -p 1234:8080 tomcat  

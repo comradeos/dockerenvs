@@ -22,16 +22,14 @@ sudo usermod -aG docker $USER
 docker run hello-world  
 ```
 
-```
-docker ps
-docker ps -a
-docker images
-docker search tomcat
-docker pull tomcat
-docker run -it -p 1234:8080 tomcat
-docker run -it -p 8888:80 nginx
-docker run -d -p 8888:80 nginx
-```
+docker ps  
+docker ps -a  
+docker images  
+docker search tomcat  
+docker pull tomcat  
+docker run -it -p 1234:8080 tomcat  
+docker run -it -p 8888:80 nginx  
+docker run -d -p 8888:80 nginx  
 
 ```
 docker build -t iaroslav .

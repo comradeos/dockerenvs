@@ -23,7 +23,9 @@ docker run hello-world
 ```
 
 docker ps  
+<!-- просмотр всех контейнеров -->
 docker ps -a  
+<!-- просмотр всех образов -->
 docker images  
 docker search tomcat  
 docker pull tomcat  

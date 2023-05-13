@@ -17,6 +17,7 @@ sudo usermod -aG docker $USER
 
 <!-- стянуть и запустить контейнер с образа hello-world -->
 docker run hello-world  
+<!-- просмотр запущеных контейнеров -->
 docker ps  
 <!-- просмотр всех контейнеров -->
 docker ps -a  

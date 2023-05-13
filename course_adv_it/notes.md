@@ -32,6 +32,7 @@ docker run -it -p 1234:8080 tomcat
 docker run -it -p 8888:80 nginx  
 docker run -d -p 8888:80 nginx  
 
+<!-- создать свой образ из докер файла -->
 docker build -t iaroslav .
 docker images
 docker run -it  -p 1234:80  iaroslav:latest
@@ -63,5 +64,7 @@ docker push 12345678.dkr.ecr.ca-central-1.amazonaws.com/myrepo:lastest
 docker pull 12345678.dkr.ecr.ca-central-1.amazonaws.com/myrepo:latest  
 
 # Kill and Delete Containers and Images
-docker rm -f $(docker ps -aq)        # Delete all Containers
-docker rmi -f $(docker images -q)    # Delete all Images
+<!-- Delete all Containers -->
+docker rm -f $(docker ps -aq)  
+<!-- Delete all Images  -->
+docker rmi -f $(docker images -q)  

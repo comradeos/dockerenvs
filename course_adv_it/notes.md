@@ -69,3 +69,9 @@ docker pull 12345678.dkr.ecr.ca-central-1.amazonaws.com/myrepo:latest
 docker rm -f $(docker ps -aq)  
 <!-- Delete all Images  -->
 docker rmi -f $(docker images -q)  
+
+
+
+docker login --username username  
+docker tag my-image username/my-repo  
+docker push username/my-repo  

@@ -70,8 +70,6 @@ docker rm -f $(docker ps -aq)
 <!-- Delete all Images  -->
 docker rmi -f $(docker images -q)  
 
-
-
 <!-- загрузить в репозиторий -->
 docker login --username username  
 docker tag my-image username/my-repo  

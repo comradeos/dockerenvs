@@ -27,6 +27,7 @@ docker images
 docker search tomcat  
 <!-- стянуть образ tomcat -->
 docker pull tomcat  
+<!-- запустить в интерактивном режиме с пробросом портов -->
 docker run -it -p 1234:8080 tomcat  
 docker run -it -p 8888:80 nginx  
 docker run -d -p 8888:80 nginx  

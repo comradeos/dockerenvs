@@ -19,12 +19,13 @@ sudo usermod -aG docker $USER
 docker run hello-world  
 <!-- просмотр запущеных контейнеров -->
 docker ps  
-<!-- просмотр всех контейнеров -->
+<!-- просмотр всех контейнеров которые запускались -->
 docker ps -a  
 <!-- просмотр всех образов -->
 docker images  
 <!-- поиск образа tomcat на dockerhub -->
 docker search tomcat  
+<!-- стянуть образ tomcat -->
 docker pull tomcat  
 docker run -it -p 1234:8080 tomcat  
 docker run -it -p 8888:80 nginx  

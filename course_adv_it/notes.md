@@ -45,10 +45,11 @@ docker rm   # delete container
 docker rmi  # delete image
 
 # UPDATE IMAGE  
-docker run -d -p 7777:80 iaroslav_ubuntu4
-docker exec -it 5267e21d140 /bin/bash
-echo "V2" >> /var/www/html/index.html
-exit
+docker run -d -p 7777:80 iaroslav_ubuntu4  
+docker exec -it 5267e21d140 /bin/bash  
+echo "V2" >> /var/www/html/index.html  
+exit  
+<!-- создать образ iaroslav_v2 из контейнера 5267e21d140 -->
 docker commit 5267e21d140 iaroslav_v2:latest  
 
 

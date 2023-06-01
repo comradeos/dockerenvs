@@ -201,7 +201,7 @@ BEGIN
         mv.movie_id,
         mv.movie_name,
         mv.year_released
-    FROM data.public.movies AS mv 
+    FROM data.public.movies AS mv
     WHERE mv.year_released >= year;
 END;
 $$
@@ -210,3 +210,21 @@ LANGUAGE plpgsql;
 SELECT * FROM fnGetMoviesByYear(2000);
 
 ----------------------------------------------------------------------------------------------------------
+
+-- DROP FUNCTION fninquerytest(text);
+
+CREATE OR REPLACE FUNCTION fnInQueryTest(IN myQuery TEXT, OUT result INT)
+AS
+$$
+DECLARE row RECORD;
+BEGIN
+    result := 0;
+    FOR row IN EXECUTE myQuery
+    LOOP
+        result := result + row.year_released;
+    END LOOP;
+END;
+$$
+LANGUAGE plpgsql;
+
+SELECT * FROM fnInQueryTest('SELECT * FROM data.public.movies');

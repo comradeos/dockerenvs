@@ -9,6 +9,12 @@ CREATE TABLE users (
 
 INSERT INTO data.public.users (email, name, password) VALUES ('ajones@mail.com', 'Adam Jones', '123');
 
+CREATE TABLE movies (
+  movie_id SERIAL PRIMARY KEY,
+  movie_name varchar(25),
+  year_released INT
+);
+
 ----------------------------------------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION fn_mid(VARCHAR, INTEGER, INTEGER)
@@ -169,5 +175,9 @@ $$
 LANGUAGE plpgsql;
 
 SELECT * FROM fnMean(ARRAY [1, 1, 2, 1]);
+
+----------------------------------------------------------------------------------------------------------
+
+
 
 ----------------------------------------------------------------------------------------------------------

@@ -186,6 +186,27 @@ SELECT * FROM fnMean(ARRAY [1, 1, 2, 1]);
 
 ----------------------------------------------------------------------------------------------------------
 
+CREATE OR REPLACE FUNCTION fnGetMoviesByYear(year INT)
+RETURNS TABLE
+(
+    movie_id INT,
+    movie_name varchar(25),
+    year_released INT
+)
+AS
+$$
+BEGIN
+    RETURN QUERY
+    SELECT
+        mv.movie_id,
+        mv.movie_name,
+        mv.year_released
+    FROM data.public.movies AS mv 
+    WHERE mv.year_released >= year;
+END;
+$$
+LANGUAGE plpgsql;
 
+SELECT * FROM fnGetMoviesByYear(2000);
 
 ----------------------------------------------------------------------------------------------------------

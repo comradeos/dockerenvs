@@ -121,3 +121,6 @@ LANGUAGE plpgsql;
 SELECT * FROM fnMakeFullCap( 'iaroslav', 'os');
 
 ----------------------------------------------------------------------------------------------------------
+
+-- PARAMETER TYPE { IN* | OUT | INOUT | VARIADIC** } **DEFAULT **VARIABLE NUMBER OF ARGUMENTS
+

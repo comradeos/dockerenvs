@@ -148,3 +148,26 @@ SELECT * FROM fnSwap(10, 20);
 SELECT fnSwap(10, 20);
 
 ----------------------------------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION fnMean(numbers NUMERIC[])
+RETURNS NUMERIC
+AS
+$$
+DECLARE total NUMERIC := 0;
+        value NUMERIC;
+        count INT := 0;
+        n_array ALIAS FOR numbers;
+BEGIN
+    FOREACH value IN ARRAY n_array
+    LOOP
+        total := total + value;
+        count := count + 1;
+    END LOOP;
+    RETURN total/count;
+END;
+$$
+LANGUAGE plpgsql;
+
+SELECT * FROM fnMean(ARRAY [1, 1, 2, 1]);
+
+----------------------------------------------------------------------------------------------------------

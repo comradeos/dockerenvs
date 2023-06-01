@@ -57,6 +57,8 @@ SELECT * FROM fn_mid2('1111222', 1, 2);
 
 ----------------------------------------------------------------------------------------------------------
 
+-- ФУНКЦИЯ:
+
 -- CREATE OR REPLACE FUNCTION funcName(fieldName DATATYPE)
 -- RETURNS <RETURN_DATATYPE>
 -- AS
@@ -124,3 +126,25 @@ SELECT * FROM fnMakeFullCap( 'iaroslav', 'os');
 
 -- PARAMETER TYPE { IN* | OUT | INOUT | VARIADIC** } **DEFAULT **VARIABLE NUMBER OF ARGUMENTS
 
+-- CREATE OR REPLACE FUNCTION funcName(PARAMETER TYPE fieldName DATATYPE)
+-- AS
+-- $$
+-- BEGIN
+--     <FUNCTION BODY HERE>
+-- END;
+-- $$
+-- LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION fnSwap(INOUT number1 INT, INOUT number2 INT)
+AS
+$$
+BEGIN
+   SELECT number1, number2 INTO number2, number1;
+END;
+$$
+LANGUAGE plpgsql;
+
+SELECT * FROM fnSwap(10, 20);
+SELECT fnSwap(10, 20);
+
+----------------------------------------------------------------------------------------------------------

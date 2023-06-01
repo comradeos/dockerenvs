@@ -217,7 +217,6 @@ CREATE OR REPLACE FUNCTION fnInQueryTest(IN myQuery TEXT, OUT result INT, OUT tx
 AS
 $$
 DECLARE row RECORD;
-
 BEGIN
     result := 0;
     FOR row IN EXECUTE myQuery

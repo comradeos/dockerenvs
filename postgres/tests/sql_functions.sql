@@ -15,6 +15,14 @@ CREATE TABLE movies (
   year_released INT
 );
 
+INSERT INTO data.public.movies (movie_name, year_released) VALUES ('Movie F', 2007);
+
+-- добавить столбец
+ALTER TABLE data.public.movies
+ADD COLUMN another INT;
+-- удалить столбец
+ALTER TABLE data.public.movies
+DROP COLUMN another;
 ----------------------------------------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION fn_mid(VARCHAR, INTEGER, INTEGER)

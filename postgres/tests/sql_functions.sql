@@ -217,6 +217,7 @@ CREATE OR REPLACE FUNCTION fnInQueryTest(IN myQuery TEXT, OUT result INT, OUT tx
 AS
 $$
 DECLARE row RECORD;
+
 BEGIN
     result := 0;
     FOR row IN EXECUTE myQuery
@@ -228,3 +229,25 @@ $$
 LANGUAGE plpgsql;
 
 SELECT * FROM fnInQueryTest('SELECT * FROM data.public.movies');
+
+----------------------------------------------------------------------------------------------------------
+
+DROP FUNCTION fninquerytest2(text);
+
+CREATE OR REPLACE FUNCTION fnInQueryTest2(OUT result INT)
+AS
+$$
+DECLARE row RECORD;
+BEGIN
+    result := 0;
+    FOR row IN SELECT * FROM data.public.movies
+    LOOP
+        result := result + row.year_released;
+    END LOOP;
+END
+$$
+LANGUAGE plpgsql;
+
+SELECT * FROM fnInQueryTest2();
+
+----------------------------------------------------------------------------------------------------------

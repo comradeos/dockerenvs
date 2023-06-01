@@ -211,9 +211,9 @@ SELECT * FROM fnGetMoviesByYear(2000);
 
 ----------------------------------------------------------------------------------------------------------
 
--- DROP FUNCTION fninquerytest(text);
+DROP FUNCTION fninquerytest(text);
 
-CREATE OR REPLACE FUNCTION fnInQueryTest(IN myQuery TEXT, OUT result INT)
+CREATE OR REPLACE FUNCTION fnInQueryTest(IN myQuery TEXT, OUT result INT, OUT txt TEXT)
 AS
 $$
 DECLARE row RECORD;

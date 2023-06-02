@@ -250,3 +250,18 @@ LANGUAGE plpgsql;
 SELECT * FROM fnInQueryTest2();
 
 ----------------------------------------------------------------------------------------------------------
+
+DROP FUNCTION fnTestCast;
+
+CREATE OR REPLACE FUNCTION fnTestCast(OUT result TEXT)
+AS
+$$
+BEGIN
+    result := cast(123.32 AS FLOAT) ;
+END
+$$
+LANGUAGE plpgsql;
+
+SELECT * FROM fnTestCast();
+
+----------------------------------------------------------------------------------------------------------

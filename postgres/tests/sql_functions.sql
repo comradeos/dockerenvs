@@ -265,3 +265,14 @@ LANGUAGE plpgsql;
 SELECT * FROM fnTestCast();
 
 ----------------------------------------------------------------------------------------------------------
+
+CREATE TABLE temp (
+  id SERIAL PRIMARY KEY,
+  djson JSONB
+);
+
+INSERT INTO temp (djson) VALUES ('{}');
+UPDATE temp SET djson = '{"data":"123"}' WHERE id = 1;
+SELECT * FROM temp WHERE id = 1;
+
+----------------------------------------------------------------------------------------------------------

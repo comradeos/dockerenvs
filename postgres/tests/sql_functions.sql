@@ -92,6 +92,7 @@ SELECT * FROM fn_mid2('1111222', 1, 2);
 -- ELSE
 --     <statements>
 -- END IF;
+
 ----------------------------------------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION fnMakeFull(firstName VARCHAR, lastName VARCHAR)

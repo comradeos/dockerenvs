@@ -277,13 +277,17 @@ SELECT * FROM temp WHERE id = 1;
 
 ----------------------------------------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION fnJsonbTest(OUT result TEXT)
+DROP FUNCTION fnJsonbTest();
+
+CREATE OR REPLACE FUNCTION fnJsonbTest()
+RETURNS JSONB
 AS
 $$
 DECLARE jsonData JSONB := '{"id":null}';
 BEGIN
-        IF jsonData->>'id' IS NULL THEN
-            result := 'yep';
+        IF (jsonData->>'id' IS NULL) THEN
+            jsonData := '{"num":234}';
+            RETURN jsonData;
         END IF;
 END;
 $$

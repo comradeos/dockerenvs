@@ -92,7 +92,6 @@ SELECT * FROM fn_mid2('1111222', 1, 2);
 -- ELSE
 --     <statements>
 -- END IF;
-
 ----------------------------------------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION fnMakeFull(firstName VARCHAR, lastName VARCHAR)
@@ -277,3 +276,17 @@ UPDATE temp SET djson = '{"data":"123"}' WHERE id = 1;
 SELECT * FROM temp WHERE id = 1;
 
 ----------------------------------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION fnJsonbTest(OUT result TEXT)
+AS
+$$
+DECLARE jsonData JSONB := '{"id":null}';
+BEGIN
+        IF jsonData->>'id' IS NULL THEN
+            result := 'yep';
+        END IF;
+END;
+$$
+LANGUAGE plpgsql;
+
+SELECT * FROM fnJsonbTest();

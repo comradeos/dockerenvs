@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  ubuntu:
+    build:
+      context: ./
+      dockerfile: docker/ubuntu
+    restart: always
+    ports:
+      - 5001:80
+    volumes:
+      - ./sources:/apps/
+      - ./nginx:/etc/nginx/sites-available/
+    hostname: ubuntu
+    tty: true
+
+  mysql:
+    build:
+      context: ./
+      dockerfile: docker/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - 3307:3306
+
+  adminer:
+    build:
+        context: ./
+        dockerfile: docker/adminer
+    restart: always
+    ports:
+      - 8081:8080

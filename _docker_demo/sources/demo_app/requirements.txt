@@ -1,0 +1,6 @@
+Flask==3.0.0
+Flask-SQLAlchemy==3.1.1
+Flask-MySQL==1.5.2
+PyMySQL==1.1.0
+cryptography==41.0.5
+mysql-connector-python==8.2.0

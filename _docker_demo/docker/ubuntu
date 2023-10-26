@@ -1,0 +1,10 @@
+FROM ubuntu:latest
+RUN apt update
+RUN apt upgrade -y
+RUN apt install python3 pip ufw nginx vim -y
+RUN pip install --upgrade pip
+COPY ./sources/demo_app/requirements.txt /apps/demo_app/requirements.txt
+RUN pip install -r /apps/demo_app/requirements.txt
+RUN service nginx start
+COPY nginx/default /etc/nginx/sites-available/default
+CMD [ "python3", "/apps/demo_app/main.py"]

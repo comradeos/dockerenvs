@@ -1,1 +1,0 @@
-docker exec -it ubuntu-ssl-ubuntu-1 bash

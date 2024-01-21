@@ -13,6 +13,7 @@ services:
             - "8980:80"
         volumes:
             - ./src:/app
+            - ./html:/var/www/html
         tty: true
         networks:
             - p1_network
@@ -27,4 +28,13 @@ services:
             - ./src:/app
         networks:
             - p1_network
-
+    
+    p1_jenkins_service:
+        image: jenkins/jenkins:lts
+        container_name: p1_jenkins
+        ports:
+            - "8982:8080"
+        volumes:
+            - ./html:/html
+        networks:
+            - p1_network

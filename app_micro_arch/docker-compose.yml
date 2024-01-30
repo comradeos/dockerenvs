@@ -1,0 +1,47 @@
+version: '3.1'
+
+networks:
+    app_micro_arch_network:
+
+services:
+  dotnet_service:
+    build:
+      context: ./
+      dockerfile: docker/dotnet/Dockerfile
+    container_name: dotnet_container
+    ports:
+      - 7001:80
+    volumes:
+      - ./src/dotnet:/app/
+    hostname: dotnet
+    tty: true
+    networks:
+      - app_micro_arch_network    
+
+  python_service:
+    build:
+      context: ./
+      dockerfile: docker/python/Dockerfile
+    container_name: python_container
+    ports:
+      - 7002:80
+    volumes:
+      - ./src/python:/app/
+    hostname: python
+    tty: true
+    networks:
+      - app_micro_arch_network
+
+  golang_service:
+    build:
+      context: ./
+      dockerfile: docker/golang/Dockerfile
+    container_name: golang_container
+    ports:
+      - 7003:80
+    volumes:
+      - ./src/golang:/app/
+    hostname: golang
+    tty: true
+    networks:
+      - app_micro_arch_network

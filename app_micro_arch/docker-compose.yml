@@ -45,3 +45,123 @@ services:
     tty: true
     networks:
       - app_micro_arch_network
+
+  java_service:
+    build:
+      context: ./
+      dockerfile: docker/java/Dockerfile
+    container_name: java_container
+    ports:
+      - 7004:80
+    volumes:
+      - ./src/java:/app/
+    hostname: java
+    tty: true
+    networks:
+      - app_micro_arch_network
+
+  php_service:
+    build:
+      context: ./
+      dockerfile: docker/php/Dockerfile
+    container_name: php_container
+    ports:
+      - 7005:80
+    volumes:
+      - ./src/php:/app/
+    hostname: php
+    tty: true
+    networks:
+      - app_micro_arch_network
+  
+  nodejs_service:
+    build:
+      context: ./
+      dockerfile: docker/nodejs/Dockerfile
+    container_name: nodejs_container
+    ports:
+      - 7006:80
+    volumes:
+      - ./src/nodejs:/app/
+    hostname: node
+    tty: true
+    networks:
+      - app_micro_arch_network  
+  
+  mysql_service:
+    build:
+      context: ./
+      dockerfile: docker/mysql/Dockerfile
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 7007:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    hostname: mysql
+    tty: true
+    networks:
+      - app_micro_arch_network
+
+  postgres_service:
+    build:
+      context: ./
+      dockerfile: docker/postgres/Dockerfile
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: postgres
+    ports:
+      - 7008:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    hostname: postgres
+    tty: true
+    networks:
+      - app_micro_arch_network
+
+  mongodb_service:
+    build:
+      context: ./
+      dockerfile: docker/mongodb/Dockerfile
+    container_name: mongodb_container
+    ports:
+      - 7009:27017
+    volumes:
+      - ./data/mongodb:/data/db
+    hostname: mongodb
+    tty: true
+    networks:
+      - app_micro_arch_network
+
+  rabbitmq_service:
+    build:
+      context: ./
+      dockerfile: docker/rabbitmq/Dockerfile
+    container_name: rabbitmq_container
+    ports:
+      - 7010:5672
+      - 7011:15672
+    volumes:
+      - ./data/rabbitmq:/var/lib/rabbitmq
+    hostname: rabbitmq
+    tty: true
+    networks:
+      - app_micro_arch_network
+
+  nginx_service:
+    build:
+      context: ./
+      dockerfile: docker/nginx/Dockerfile
+    container_name: nginx_container
+    ports:
+      - 8080:80
+    volumes:
+      - ./src/php:/app
+      - ./src/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    hostname: nginx
+    tty: true
+    networks:
+      - app_micro_arch_network

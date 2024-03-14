@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     mc \
     gcc \
-    g++ \
+    g++ \   
     clang \
+    htop \
+    iftop \
     && apt-get clean

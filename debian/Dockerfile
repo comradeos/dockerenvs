@@ -19,4 +19,10 @@ RUN apt-get update && apt-get install -y \
     iftop \
     wget \
     curl \
+    git \
+    nginx \
     && apt-get clean
+
+WORKDIR /src
+
+CMD ["nginx", "-g", "daemon off;"]

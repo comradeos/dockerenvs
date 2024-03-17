@@ -17,4 +17,6 @@ RUN apt-get update && apt-get install -y \
     clang \
     htop \
     iftop \
+    wget \
+    curl \
     && apt-get clean

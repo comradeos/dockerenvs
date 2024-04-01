@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  mssql-server-db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql-server-db
+    environment:
+      SA_PASSWORD: "YourStrongPassword25" # login sa, password root
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql-server-data:/var/opt/mssql
+
+volumes:
+  mssql-server-data:

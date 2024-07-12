@@ -1,0 +1,11 @@
+version: '3'
+services:
+  debian-xfce-vnc:
+    build: .
+    ports:
+      - "5900:5900"
+    volumes:
+      - ./startup.sh:/startup.sh
+    environment:
+      - DISPLAY=:1
+      - VNC_SERVER_PASSWORD=your_password_here

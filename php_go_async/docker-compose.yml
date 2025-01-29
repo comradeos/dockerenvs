@@ -32,7 +32,9 @@ services:
       - mysql
       - rabbitmq
       - redis
+    command: ["/bin/sh", "-c", "go build -o main . && ./main"]
     tty: true
+    
 
   rabbitmq:
     image: rabbitmq:3-management

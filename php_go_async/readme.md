@@ -10,3 +10,5 @@ php bin/console make:controller TestController
 установить php-amqplib
 composer require php-amqplib/php-amqplib
 
+для отримання на go 
+go get github.com/streadway/amqp

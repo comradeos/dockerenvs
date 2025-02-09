@@ -6,10 +6,15 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     unzip \
     git \
+    libtool \
+    autoconf \
+    build-essential \
     && docker-php-ext-install \
     intl \
     pdo_mysql \
-    opcache
+    opcache \
+    && pecl install redis \
+    && docker-php-ext-enable redis
 
 # Установить Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -25,7 +30,7 @@ WORKDIR /var/www/html
 COPY ./src/php/ /var/www/html
 
 # Установить зависимости проекта через Composer
-RUN composer install
+RUN composer update --ignore-platform-reqs
 
 # Установить права для веб-сервера
 RUN chown -R www-data:www-data /var/www/html && chmod -R 775 /var/www/html/var

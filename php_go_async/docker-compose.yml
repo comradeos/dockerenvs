@@ -32,6 +32,8 @@ services:
       - mysql
       - rabbitmq
       - redis
+      - php
+    restart: always
     command: ["/bin/sh", "-c", "go build -o main . && ./main"]
     tty: true
     

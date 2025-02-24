@@ -33,7 +33,11 @@ services:
       - rabbitmq
       - redis
       - php
-    restart: always
+    restart: on-failure # Перезапускать контейнер при ошибке
+    deploy: # Настройки для Docker Swarm
+      restart_policy: # Политика перезапуска
+        condition: on-failure # Перезапускать контейнер при ошибке
+        max_attempts: 10 # Максимальное количество попыток перезапуска
     command: ["/bin/sh", "-c", "go build -o main . && ./main"]
     tty: true
     

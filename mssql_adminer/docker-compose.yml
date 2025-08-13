@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "pass7"
+      MSSQL_PID: "Developer"
+    ports:
+      - "7100:1433"
+    volumes:
+      - ./data:/var/opt/mssql
+    restart: unless-stopped
+
+  adminer:
+    image: miebach/adminer-mssql:2023-12
+    container_name: adminer
+    environment:
+      ADMINER_DEFAULT_SERVER: mssql
+    ports:
+      - "7101:8080"
+    depends_on:
+      - mssql
+    restart: unless-stopped
+
+  mssql-init:
+    image: mcr.microsoft.com/mssql-tools
+    container_name: mssql-init
+    depends_on:
+      - mssql
+    environment:
+      SA_PASSWORD: "pass7"
+      DB_NAME: "technical_base_db"
+      APP_LOGIN: "user7"
+      APP_PASSWORD: "pass7"
+    volumes:
+      - ./init.sh:/init.sh:ro
+      - ./init.sql:/init.sql:ro
+    entrypoint: ["/bin/bash","-lc","/init.sh"]
+    restart: "no"

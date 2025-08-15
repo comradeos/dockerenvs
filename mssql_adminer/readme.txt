@@ -21,3 +21,4 @@ sudo tar -xzf backups/mssql-volume_YYYYmmdd_HHMMSS.tar.gz -C ./data
 sudo chown -R 10001:0 ./data
 sudo chmod -R 770 ./data
 sudo docker compose start mssql
+
